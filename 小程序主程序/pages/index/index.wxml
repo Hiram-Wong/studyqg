@@ -1,0 +1,98 @@
+<cu-custom bgColor="bg-gradual-green">
+  <view slot="content">首页</view>
+</cu-custom>
+
+<!--轮播-->
+<swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+  <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
+    <view class="swiper-item">
+      <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+      <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+    </view>
+  </swiper-item>
+</swiper>
+
+
+<view class="cu-bar bg-white">
+  <view class="action sub-title">
+    <text class="text-xl text-bold text-blue">开始搜索咯</text>
+    <text class="text-ABC text-blue">search</text>
+  </view>
+</view>
+<view class="cu-form-group">
+	<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaInput" placeholder="请输入至少两个字符以上的关键词" value="{{textareaValue}}"></textarea>
+</view>
+<view class="margin-top-sm cu-card">
+  <!-- <view class="title text-left margin-left-sm fl">题库</view> -->
+  <view class="cu-capsule round margin-left-sm margin-top-xs fl">
+    <view class="cu-tag bg-red ">
+      题库总量
+    </view>
+    <view class="cu-tag line-red">
+      {{res_total}}
+    </view>
+  </view>
+  <view class="text-right margin-right-sm fr">
+    <button class="cu-btn round bg-green shadow=true margin-right-sm" bindtap="clear">清空</button>
+    <button class="cu-btn round bg-cyan shadow=true" bindtap="search">搜索</button>
+  </view>
+</view>
+
+<!--弹窗-->
+<view class="cu-modal {{modalName=='textareaModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">学习强国助手提醒您</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      请输入两个字以上的关键词
+    </view>
+  </view>
+</view>
+
+<!--弹窗-->
+<view class="cu-modal {{modalName=='resModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">学习强国助手提醒您</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      未搜到此关键词相关题目，题库持续更新中！
+    </view>
+  </view>
+</view>
+
+<!--结果-->
+<view class="result margin-top-sm" hidden="{{isBindExpert}}">
+  <view class="cu-bar bg-white margin-top-sm">
+    <view class="action sub-title">
+      <text class="text-xl text-bold text-blue">搜索结果</text>
+      <text class="text-ABC text-blue">answer</text>
+    </view>
+  </view>
+  <view class="card" wx:for='{{arrList}}'>
+    <view class="cu-card article" >
+      <view class="cu-item shadow">
+        <view class="title">
+          <view class="text-cut">答案{{item.answer_detail}}</view>
+        </view>
+        <view class="content">
+          <view class="desc">
+            <view class="text-content">{{item.question}}</view>
+            <view>
+              <view class="cu-tag bg-red light sm round">学习强国</view>
+              <view class="cu-tag bg-green light sm round">挑战答题</view>
+              <view class="cu-tag bg-grey light sm round fr">{{index+1}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

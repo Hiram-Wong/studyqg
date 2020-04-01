@@ -1,0 +1,141 @@
+<cu-custom bgColor="bg-gradual-green">
+  <view slot="content">快速上分秘籍</view>
+</cu-custom>
+
+<view class="cu-list menu-avatar comment solids-top">
+      <view class="cu-item">
+        <view class="cu-avatar round" style="background-image:url(/images/user.png);"></view>
+        <view class="content">
+          <view class="text-grey">Me</view>
+          <view class="text-gray text-content text-df">
+            <text>
+              学习强国很关键,积分日日不能断
+              积分落后被批评,每周大会还点名
+              天天熬夜干业务,积分排名不见动
+              谁说业务不重要,是你听话片面了
+            </text>
+          </view>
+          <view class="bg-grey padding-sm radius margin-top-sm  text-sm">
+            <view class="flex">
+              <view>作者：</view>
+              <view class="flex-sub">
+                <text>
+                  手机打开此软件,日日满分没烦恼。奥里给！
+                </text>
+              </view>
+            </view>
+          </view>
+          <view class="margin-top-sm flex justify-between">
+            <view class="text-gray text-df">2020年3月31日</view>
+            <view>
+              <text class="cuIcon-appreciatefill text-red"></text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+<view class="cu-timeline">
+  <view class="cu-time">每日待办</view>
+  <view class="cu-item text-blue">
+    <view class="content bg-red shadow-blur">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white">播放音频</view>
+        <view class="cu-tag line-white">耗时10秒</view>
+      </view>
+      <view class="margin-top">
+        <text>右下角`电台`，任意选个一组，点击后会自动顺序播放该组的所有音频
+        [要求大于5个音频，每个音频最好平均小于3分钟，防止时间到了个数不够]</text>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-blue">
+    <view class="content bg-orange shadow-blur">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white">每日答题 | 每周答题 | 专项答题</view>
+        <view class="cu-tag line-white">平均耗时2分钟</view>
+      </view>
+      <view class="margin-top">
+      <text>根据`查看提示`填写内容。注意错别字！</text>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-blue">
+    <view class="content bg-olive shadow-blur">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white">挑战答题</view>
+        <view class="cu-tag line-white">耗时1分钟</view>
+      </view>
+      <view class="margin-top">
+      <text>根据本小程序搜索结果并填写内容。
+        如手机支持分屏，同时打开`学习强国和`本小程序`，对着题目搜题，会方便许多</text>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-blue">
+    <view class="content bg-green shadow-blur">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white">阅读文章</view>
+        <view class="cu-tag line-white">耗时1分钟</view>
+      </view>
+      <view class="margin-top">
+        <text>第1、2篇文章打开，完成评论和分享任务
+        [分享的bug我就不说了]，
+      第3、4篇停留10秒钟，
+      第五篇打开一直放着就行。</text>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-blue">
+    <view class="bg-cyan content">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white">本地频道</view>
+        <view class="cu-tag line-white">耗时10秒</view>
+      </view>
+      <view class="margin-top">2020年上线的“本地频道”，打开定位或点“切换地区”选中所在地区，点击“XX卫视”或“XX新闻广播”，播放2秒就关。</view>
+    </view>
+  </view>
+  <view class="cu-item text-blue">
+    <view class="bg-blue content">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white">订阅</view>
+        <view class="cu-tag line-white">耗时10秒</view>
+      </view>
+      <view class="margin-top">
+        <text>拉到最底就行，目前已知19个隐藏订阅：
+
+          第①类：可以在各省学习平台下拉菜单找到的，共有12个：
+          1.湖北1个：武汉
+          2.山东5个：济南、青岛、淄博、潍坊、菏泽
+          3.浙江3个：杭州、湖州、宁波
+          4.贵州1个：贵阳
+          5.广东2个：广州、深圳
+
+          第②类：要搜索专门新闻才能找到的，目前共有7个：
+          1.【河北新闻网】：京津冀“2+26”城市明确PM2.5浓度下降比例
+          2.【千龙网】：凝心聚力共筑梦 脱贫攻坚奔小康——首都统一战线聚力脱贫攻坚
+          3.【春晚】：官宣：《2019年春节联欢晚会》节目单公布！
+          4.【苏州学习平台】：江苏昆山张浦：五个“零”让政务服务简约高效
+          5.【大自然】：“坚定地走向深海”——记蛟龙号载人潜水器潜航员唐嘉陵
+          6.【经济】:聚合支付如何利用区块链和5G再上台阶
+          7.【中国航天科工】:航天建设帮你360度俯瞰“中国天眼”
+
+          以上第②类仅限安卓系统，如为苹果手机，可使用模拟器下载学习强国登陆订阅。
+        </text>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-blue">
+    <view class="bg-purple content">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white">阅读文章</view>
+        <view class="cu-tag line-white">耗时15分钟</view>
+      </view>
+      <view class="margin-top">
+        <text>到目前共耗时4分30秒，文章已经阅读5篇了，再等15分钟阅读时长就达标了；
+        音频也已经播放了几分钟了，15分钟内会自动顺序播放，满足6个和18分钟的要求。</text>
+      </view>
+    </view>
+  </view>
+</view>
+
