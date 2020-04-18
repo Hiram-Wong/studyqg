@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index/index",
+    "pages/index/detail/detail",
+    "pages/cheats/cheats",
+    "pages/about/home/home",
+    "pages/about/about/about",
+    "pages/about/log/log"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "ColorUI",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index/index",
+        "text": "首页",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home_select.png"
+      },
+      {
+        "pagePath": "pages/cheats/cheats",
+        "text": "快速上分秘籍",
+        "iconPath": "/images/cheats.png",
+        "selectedIconPath": "/images/cheats_select.png"
+      },
+      {
+        "pagePath": "pages/about/home/home",
+        "text": "关于",
+        "iconPath": "/images/about.png",
+        "selectedIconPath": "/images/about_select.png"
+      }
+      
+    ],
+    "color": "#8a8a8a",
+    "selectedColor": "#c93a3a"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json",
+  "plugins": {
+    "WechatSI": {
+      "version": "0.3.3",
+      "provider": "wx069ba97219f66d99"
+    }
+  }
+}

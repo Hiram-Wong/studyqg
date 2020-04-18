@@ -1,0 +1,14 @@
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+/* 返回顶部 */
+.goTop{
+  height: 80rpx;
+  width: 80rpx;
+  position: fixed;
+  bottom: 50rpx;
+  background: rgba(0,0,0,.3);
+  right: 30rpx;
+  border-radius: 50%;
+  z-index: 100;
+  background-color: white;
+}

@@ -1,0 +1,15 @@
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">关于</view>
+</cu-custom>
+
+<view class='margin-xl bg-white padding-xl radius shadow-lg'>
+  <view class='text-center margin-bottom text-lg  text-grey'>关于每日强国</view>
+  <view class='text-content'>
+    <view>Hi！各位同学~欢迎使用每日强国！</view>
+    <view class='margin-top-sm'>该项目是我个人开发的基于ColorUI组件框架的一款高颜值的微信小程。该项目的初衷是为了自己更方便的完成学习强国学习</view>
+    <view class='margin-top-sm'>项目是开源的，不收取任何费用，如果这个项目有帮到你，或者你觉得很赞，可以在赞赏里扫描赞赏码支持一下，将用于服务器丶域名的续费以及api的维护！</view>
+    <view class='margin-top-sm'>如你有好想法可发邮箱至[wy-hai@qq.com]，也可直接点击关于页面邮箱处快速复制邮箱哦，我会加酌情考虑增加。</view>
+    <view class='margin-top-sm'>更多功能敬请期待！</view>
+  </view>
+</view>

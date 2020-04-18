@@ -1,0 +1,36 @@
+<cu-custom bgColor="bg-gradual-green"  isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">详情</view>
+</cu-custom>
+
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class="action">
+    <text class="cuIcon-title text-blue"></text>题目
+  </view>
+</view>
+<view class="padding bg-white">
+  <view class="padding">{{arryList.question}}</view>
+</view>
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class="action">
+    <text class="cuIcon-title text-blue"></text>正确选项  {{arryList.answer}}
+  </view>
+</view>
+<view class="padding text-center">
+  <view class="padding-lr bg-white">
+    <view class="cu-tag bg-red light sm round fl margin-top-sm">A</view>
+    <view class="padding">{{arryList.A}}</view>
+  </view>
+  <view class="padding-lr bg-white margin-top">
+    <view class="cu-tag bg-cyan light sm round fl margin-top-sm">B</view>
+    <view class="padding">{{arryList.B}}</view>
+  </view>
+  <view class="padding-lr bg-white margin-top" wx:if="{{arryList.C != null}}">
+    <view class="cu-tag bg-mauve light sm round fl margin-top-sm">C</view>
+    <view class="padding">{{arryList.C}}</view>
+  </view>
+  <view class="padding-lr bg-white margin-top" wx:if="{{arryList.D != null}}">
+    <view class="cu-tag bg-pink light sm round fl margin-top-sm">D</view>
+    <view class="padding">{{arryList.D}}</view>
+  </view>
+</view>

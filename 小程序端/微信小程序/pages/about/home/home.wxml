@@ -1,0 +1,80 @@
+<scroll-view scroll-y class="scrollPage">
+  <view class="UCenter-bg">
+    <!-- <image src="/images/logo.png" class="png" mode="widthFix"></image> -->
+    <view class="userinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <!-- <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
+      </block>
+    </view>
+    <view class="margin-top-sm">
+      <text>{{userInfo.nickName}}</text>
+    </view>
+    <view class="text-xl">每日强国
+      <text class="text-df">{{versation}}</text>
+    </view>
+    <image src="https://tva3.sinaimg.cn/large/8d406c5egy1gamn31scsdg20f002skhn.gif" mode="scaleToFill" class="gif-wave"></image>
+  </view>
+  <!-- <view class="padding flex text-center text-grey bg-white shadow-warp">
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-orange">{{visitTotal}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-attentionfill"></text> View</view>
+    </view>
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-blue">{{starCount}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-favorfill"></text> Star</view>
+    </view>
+    <view class="flex flex-sub flex-direction">
+      <view class="text-xxl text-green">{{forksCount}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-fork"></text> Fork</view>
+    </view>
+  </view> -->
+  <view class="cu-list menu  margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/about/about/about" hover-class="none">
+        <text class="cuIcon-info text-red"></text>
+        <text class="text-grey">关于</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/about/log/log" hover-class="none">
+        <text class="cuIcon-formfill text-orange"></text>
+        <text class="text-grey">日志</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <view class="content" bindtap="showQrcode">
+        <text class="cuIcon-barcode text-purple"></text>
+        <text class="text-grey">赞赏</text>
+      </view>
+    </view>
+    <view class="cu-item arrow">
+      <view class="content" bindtap="CopyLink" data-link="wy-hai@qq.com">
+        <text class="cuIcon-mail text-grey"></text>
+        <text class="text-grey">邮箱</text>
+      </view>
+    </view>
+    <view class="cu-item arrow">
+      <button class="cu-btn content" open-type="contact">
+        <text class="cuIcon-service text-blue"></text>
+        <text class="text-grey">客服</text>
+      </button>
+    </view>
+    <view class="cu-item arrow">
+      <button class="cu-btn content" open-type="feedback">
+        <text class="cuIcon-writefill text-cyan"></text>
+        <text class="text-grey">反馈</text>
+      </button>
+    </view>
+  </view>
+  <view class="cu-tabbar-height"></view>
+  <view class="flex-sub text-center">
+    <view class="text-xs padding">
+      <text class="text-gray">如发现选项和答案不一样，请联系客服修正！</text>
+    </view>
+  </view>
+</scroll-view>
