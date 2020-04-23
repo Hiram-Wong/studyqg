@@ -1,0 +1,301 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>每日强国-挑战答题题库</title>
+    <link rel="icon" href="{% static 'index/favicon.ico' %}" type="image/ico">
+    <meta name="keywords" content="每日强国">
+    <meta name="description" content="每日强国">
+    <meta name="author" content="Hiram">
+    <link href="{% static "index/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "index/css/materialdesignicons.min.css" %}" rel="stylesheet">
+    <link href="{% static "index/css/style.min.css" %}" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+</head>
+
+<body>
+<div class="lyear-layout-web">
+    <div class="lyear-layout-container">
+        <!--左侧导航-->
+        <aside class="lyear-layout-sidebar">
+
+            <!-- logo -->
+            <div id="logo" class="sidebar-header">
+                <a href=""><img
+                        src="https://ae01.alicdn.com/kf/H23c2d1373b194c61a2ebe9e6278920591.png"
+                        title="LightYear" alt="LightYear"/></a>
+            </div>
+            <div class="lyear-layout-sidebar-scroll">
+
+                <nav class="sidebar-main">
+                    <ul class="nav nav-drawer">
+                        <li class="nav-item"><a href=""><i class="mdi mdi-home"></i> 首页</a></li>
+                    </ul>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <p class="copyright">Copyright &copy; 2020. <a target="_blank"
+                                                                   href="https://github.com/Hiram-Wong/studyqg">Hiram</a>
+                        All rights reserved.</p>
+                </div>
+            </div>
+
+        </aside>
+        <!--End 左侧导航-->
+
+        <!--头部信息-->
+        <header class="lyear-layout-header">
+
+            <nav class="navbar navbar-default">
+                <div class="topbar">
+
+                    <div class="topbar-left">
+                        <div class="lyear-aside-toggler">
+                            <span class="lyear-toggler-bar"></span>
+                            <span class="lyear-toggler-bar"></span>
+                            <span class="lyear-toggler-bar"></span>
+                        </div>
+                        <span class="navbar-page-title"> Sou ~~ 今天你强国了么？ </span>
+                    </div>
+
+                    <ul class="topbar-right">
+                        <li class="dropdown dropdown-profile">
+                            <a href="javascript:void(0)" data-toggle="dropdown">
+                                <img class="img-avatar img-avatar-48 m-r-10"
+                                     src="https://avatars0.githubusercontent.com/u/30908279?s=460&u=7b205b55eb12684c0abcd0a2c973cbd57fc23ce1&v=4"
+                                     alt="Hiram"/>
+                                <span>Hiram</span>
+                            </a>
+                        </li>
+                        <!--切换主题配色-->
+                        <li class="dropdown dropdown-skin">
+                            <span data-toggle="dropdown" class="icon-palette"><i class="mdi mdi-palette"></i></span>
+                            <ul class="dropdown-menu dropdown-menu-right" data-stopPropagation="true">
+                                <li class="drop-title"><p>主题</p></li>
+                                <li class="drop-skin-li clearfix">
+                <span class="inverse">
+                  <input type="radio" name="site_theme" value="default" id="site_theme_1" checked>
+                  <label for="site_theme_1"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="site_theme" value="dark" id="site_theme_2">
+                  <label for="site_theme_2"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="site_theme" value="translucent" id="site_theme_3">
+                  <label for="site_theme_3"></label>
+                </span>
+                                </li>
+                                <li class="drop-title"><p>LOGO</p></li>
+                                <li class="drop-skin-li clearfix">
+                <span class="inverse">
+                  <input type="radio" name="logo_bg" value="default" id="logo_bg_1" checked>
+                  <label for="logo_bg_1"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="logo_bg" value="color_2" id="logo_bg_2">
+                  <label for="logo_bg_2"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="logo_bg" value="color_3" id="logo_bg_3">
+                  <label for="logo_bg_3"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="logo_bg" value="color_4" id="logo_bg_4">
+                  <label for="logo_bg_4"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="logo_bg" value="color_5" id="logo_bg_5">
+                  <label for="logo_bg_5"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="logo_bg" value="color_6" id="logo_bg_6">
+                  <label for="logo_bg_6"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="logo_bg" value="color_7" id="logo_bg_7">
+                  <label for="logo_bg_7"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="logo_bg" value="color_8" id="logo_bg_8">
+                  <label for="logo_bg_8"></label>
+                </span>
+                                </li>
+                                <li class="drop-title"><p>头部</p></li>
+                                <li class="drop-skin-li clearfix">
+                <span class="inverse">
+                  <input type="radio" name="header_bg" value="default" id="header_bg_1" checked>
+                  <label for="header_bg_1"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="header_bg" value="color_2" id="header_bg_2">
+                  <label for="header_bg_2"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="header_bg" value="color_3" id="header_bg_3">
+                  <label for="header_bg_3"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="header_bg" value="color_4" id="header_bg_4">
+                  <label for="header_bg_4"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="header_bg" value="color_5" id="header_bg_5">
+                  <label for="header_bg_5"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="header_bg" value="color_6" id="header_bg_6">
+                  <label for="header_bg_6"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="header_bg" value="color_7" id="header_bg_7">
+                  <label for="header_bg_7"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="header_bg" value="color_8" id="header_bg_8">
+                  <label for="header_bg_8"></label>
+                </span>
+                                </li>
+                                <li class="drop-title"><p>侧边栏</p></li>
+                                <li class="drop-skin-li clearfix">
+                <span class="inverse">
+                  <input type="radio" name="sidebar_bg" value="default" id="sidebar_bg_1" checked>
+                  <label for="sidebar_bg_1"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="sidebar_bg" value="color_2" id="sidebar_bg_2">
+                  <label for="sidebar_bg_2"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="sidebar_bg" value="color_3" id="sidebar_bg_3">
+                  <label for="sidebar_bg_3"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="sidebar_bg" value="color_4" id="sidebar_bg_4">
+                  <label for="sidebar_bg_4"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="sidebar_bg" value="color_5" id="sidebar_bg_5">
+                  <label for="sidebar_bg_5"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="sidebar_bg" value="color_6" id="sidebar_bg_6">
+                  <label for="sidebar_bg_6"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="sidebar_bg" value="color_7" id="sidebar_bg_7">
+                  <label for="sidebar_bg_7"></label>
+                </span>
+                                    <span>
+                  <input type="radio" name="sidebar_bg" value="color_8" id="sidebar_bg_8">
+                  <label for="sidebar_bg_8"></label>
+                </span>
+                                </li>
+                            </ul>
+                            <!--切换主题配色-->
+                    </ul>
+
+                </div>
+            </nav>
+
+        </header>
+        <!--End 头部信息-->
+
+        <!--页面主要内容-->
+        <main class="lyear-layout-content">
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-toolbar clearfix">
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <input type="hidden" name="search_field" id="search-field" value="title">
+                                        <div class="btn btn-default dropdown-toggle" aria-haspopup="true"
+                                             aria-expanded="false">搜索
+                                        </div>
+                                    </div>
+                                    <div class="search">
+                                        <input v-model="input" @change="search()" type="text" class="form-control"
+                                               value="" name="keyword" placeholder="请输入关键词">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>题目</th>
+                                            <!-- <th>答案</th> -->
+                                            <th>A</th>
+                                            <th>B</th>
+                                            <th>C</th>
+                                            <th>D</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="res">
+                                        <tr v-for="item in searchList">
+                                            <td>{% verbatim myblock %}{{ item.id }}{% endverbatim myblock %}</td>
+                                            <td>{% verbatim myblock %}{{ item.question }}{% endverbatim myblock %}</td>
+                                            <!-- <td>{{item.answer}}</td> -->
+                                            <td :class="{'text-success': (item.answer == 'A' )}">{% verbatim myblock %}{{ item.A }}{% endverbatim myblock %}</td>
+                                            <td :class="{'text-success': (item.answer == 'B' )}">{% verbatim myblock %}{{ item.B }}{% endverbatim myblock %}</td>
+                                            <td :class="{'text-success': (item.answer == 'C' )}">{% verbatim myblock %}{{ item.C }}{% endverbatim myblock %}</td>
+                                            <td :class="{'text-success': (item.answer == 'D' )}">{% verbatim myblock %}{{ item.D }}{% endverbatim myblock %}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+        <!--End 页面主要内容-->
+    </div>
+</div>
+
+<script type="text/javascript" src="{% static "index/js/jquery.min.js" %}"></script>
+<script type="text/javascript" src="{% static "index/js/bootstrap.min.js" %}"></script>
+<script type="text/javascript" src="{% static "index/js/perfect-scrollbar.min.js" %}"></script>
+<script type="text/javascript" src="{% static "index/js/main.min.js" %}"></script>
+<script>
+    var search = new Vue({
+        el: '.row',
+        data() {
+            return {
+                searchList: [],
+                input: ''
+            }
+        },
+        created() {
+            this.search();
+        },
+        methods: {
+            search() {
+                $.ajax({
+                    type: 'get',
+                    url: "http://127.0.0.1:8000/search?kw=" + this.input,
+                    dataType: "json",
+                    success: (res) => {
+                        this.searchList = res.data;
+                    },
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>

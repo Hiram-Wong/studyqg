@@ -4,7 +4,7 @@ from . import views
 
 # 定义接口
 urlpatterns = [
-    path('hello', views.hello),
+    path('', views.index, name="index"),
     path('banner', views.banner, name="banner"),
     path('search', views.search, name="search"),
     path('log', views.log, name="log"),

@@ -40,11 +40,12 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-# ]
-#
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/static/',
+]
+
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
 MIDDLEWARE = [
@@ -130,7 +131,7 @@ STATIC_URL = '/static/'
 
 # simpleui配置
 SIMPLEUI_DEFAULT_THEME = 'layui.css'
-SIMPLEUI_HOME_TITLE = '百度一下你就知道'
+SIMPLEUI_HOME_TITLE = '每日强国'
 SIMPLEUI_LOGIN_PARTICLES = False
 SIMPLEUI_LOGO = 'https://avatars2.githubusercontent.com/u/13655483?s=60&v=4'
 SIMPLEUI_CONFIG = {

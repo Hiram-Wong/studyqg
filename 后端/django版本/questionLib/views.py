@@ -7,8 +7,8 @@ from django.db.models import Q
 from django.http import HttpResponse
 
 
-def hello(request):
-    return json_response(200, "hello word", [])
+def index(request):
+    return render(request, "search/index.html")
 
 
 def banner(request):
@@ -28,33 +28,36 @@ def banner(request):
 
 def search(request):
     keyword = request.GET.get('kw')
-    # res = models.QuestionLib.objects.filter(question__icontains=keyword)
-    res = models.QuestionLib.objects.filter(
-        Q(question__icontains=keyword) | Q(A__icontains=keyword) | Q(B__icontains=keyword) | Q(
-            C__icontains=keyword) | Q(D__icontains=keyword))
-    list = []
-    for i in res:
-        answer = i.answer
-        if answer == 'A':
-            answer_detail = answer + ":" + i.A
-        elif answer == "B":
-            answer_detail = answer + ":" + i.B
-        elif answer == "C":
-            answer_detail = answer + ":" + i.C
-        else:
-            answer_detail = answer + ":" + i.D
-        data = {
-            'id': i.id,
-            'question': i.question,
-            'answer': answer,
-            'A': i.A,
-            'B': i.B,
-            'C': i.C,
-            'D': i.D,
-            'answer_detail': answer_detail
-        }
-        list.append(data)
-    return json_response(200, "获取成功", list)
+    if keyword != '':
+        # res = models.QuestionLib.objects.filter(question__icontains=keyword)
+        res = models.QuestionLib.objects.filter(
+            Q(question__icontains=keyword) | Q(A__icontains=keyword) | Q(B__icontains=keyword) | Q(
+                C__icontains=keyword) | Q(D__icontains=keyword))
+        list = []
+        for i in res:
+            answer = i.answer
+            if answer == 'A':
+                answer_detail = answer + ":" + i.A
+            elif answer == "B":
+                answer_detail = answer + ":" + i.B
+            elif answer == "C":
+                answer_detail = answer + ":" + i.C
+            else:
+                answer_detail = answer + ":" + i.D
+            data = {
+                'id': i.id,
+                'question': i.question,
+                'answer': answer,
+                'A': i.A,
+                'B': i.B,
+                'C': i.C,
+                'D': i.D,
+                'answer_detail': answer_detail
+            }
+            list.append(data)
+        return json_response(200, "获取成功", list)
+    else:
+        return json_response(200, "请输入关键词", '')
 
 
 def id(request):

@@ -47,5 +47,7 @@
 
 # 预览
 
+[pc搜索](https://xuexi.catni.cn)
+
 ![微信小程序](https://ae01.alicdn.com/kf/H3824bf27301e460c9f97e0fc11069d25Z.png)
 ![QQ小程序](https://ae01.alicdn.com/kf/Hd455a251f2e24ec6bedf82443f6896fcf.png)
