@@ -35,7 +35,7 @@
 
 * Django版本
 
-1. P.s: Django开发了前端搜索『光年模板+vue+jQuery』丶api接口和后台管理『采用[simpleui主题](https://github.com/newpanjing/simpleui)』,支持Banner·题库·开发日志的修改
+1. P.s: Django开发了前端搜索『光年模板+Vue.js+axios』·api接口和后台管理『采用[simpleui主题](https://github.com/newpanjing/simpleui)』,支持Banner·题库·开发日志的修改
 2. 依赖第三方库『django，django-cors-headers,django-simpleui』
 3. 后台预览
 ![Search](https://ae01.alicdn.com/kf/Hda2271596a7e4edab8357c5ddc701f3cW.png)
@@ -47,7 +47,7 @@
 
 # 预览
 
-[pc搜索](https://xuexi.catni.cn)
+[前端搜索](https://xuexi.catni.cn)
 
 ![微信小程序](https://ae01.alicdn.com/kf/H3824bf27301e460c9f97e0fc11069d25Z.png)
 ![QQ小程序](https://ae01.alicdn.com/kf/Hd455a251f2e24ec6bedf82443f6896fcf.png)

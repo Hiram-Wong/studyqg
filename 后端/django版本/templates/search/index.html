@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <title>每日强国-挑战答题题库</title>
-    <link rel="icon" href="{% static 'index/favicon.ico' %}" type="image/ico">
+    <link rel="icon" href="https://ae01.alicdn.com/kf/H138a377fd1b247aaa08f7561244afcf0T.png" type="image/ico">
     <meta name="keywords" content="每日强国">
     <meta name="description" content="每日强国">
     <meta name="author" content="Hiram">
@@ -13,6 +13,7 @@
     <link href="{% static "index/css/materialdesignicons.min.css" %}" rel="stylesheet">
     <link href="{% static "index/css/style.min.css" %}" rel="stylesheet">
     <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.2/axios.min.js"></script>
 </head>
 
 <body>
@@ -24,7 +25,7 @@
             <!-- logo -->
             <div id="logo" class="sidebar-header">
                 <a href=""><img
-                        src="https://ae01.alicdn.com/kf/H23c2d1373b194c61a2ebe9e6278920591.png"
+                        src="https://ae01.alicdn.com/kf/H138a377fd1b247aaa08f7561244afcf0T.png"
                         title="LightYear" alt="LightYear"/></a>
             </div>
             <div class="lyear-layout-sidebar-scroll">
@@ -64,9 +65,9 @@
                         <li class="dropdown dropdown-profile">
                             <a href="javascript:void(0)" data-toggle="dropdown">
                                 <img class="img-avatar img-avatar-48 m-r-10"
-                                     src="https://avatars0.githubusercontent.com/u/30908279?s=460&u=7b205b55eb12684c0abcd0a2c973cbd57fc23ce1&v=4"
-                                     alt="Hiram"/>
-                                <span>Hiram</span>
+                                     src="https://ae01.alicdn.com/kf/H138a377fd1b247aaa08f7561244afcf0T.png"
+                                     alt="每日强国"/>
+                                <span>每日强国</span>
                             </a>
                         </li>
                         <!--切换主题配色-->
@@ -284,15 +285,15 @@
             this.search();
         },
         methods: {
-            search() {
-                $.ajax({
-                    type: 'get',
-                    url: "http://127.0.0.1:8000/search?kw=" + this.input,
-                    dataType: "json",
-                    success: (res) => {
-                        this.searchList = res.data;
-                    },
+            async search() {
+                axios.get('/search', {
+                    params: {
+                      kw: this.input
+                    }
                 })
+                .then(response => {
+                    this.searchList = response.data.data;
+                });
             }
         }
     })
