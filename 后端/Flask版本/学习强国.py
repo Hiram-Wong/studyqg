@@ -1,32 +1,37 @@
 # -*- encoding: utf-8 -*-
 
-from flask import Flask, request, Response
+from flask import Flask, request, Response, render_template
 import pymysql, json, requests
 
-from flask_cors import *
+# from flask_cors import *
 
 app = Flask(__name__)
 
 
 # 解决跨域问题
-CORS(app, supports_credentials=True)
+# CORS(app, supports_credentials=True)
 
 
 def mysql():
     conn = pymysql.connect(
-        host='localhost',
+        host='127.0.0.1',
         user='study',
-        passwd='123456',
+        passwd='study',
         db='study',
         charset='utf8'
     )
     return conn
 
 
-def search(key):
+def search(key,choice):
     mysqls = mysql()
     cur = mysqls.cursor()
-    sql_search = 'SELECT * FROM study WHERE question LIKE "%{}%"'.format(key)
+    if choice:
+        sql_search = 'SELECT * FROM study WHERE question LIKE "%{}%" union SELECT * FROM study WHERE a LIKE "%{}%" ' \
+                     'union SELECT * FROM study WHERE b LIKE "%{}%" union SELECT * FROM study WHERE c LIKE "%{}%" ' \
+                     'union SELECT * FROM study WHERE d LIKE "%{}%"'.format(key,key,key,key,key)
+    else:
+        sql_search = 'SELECT * FROM study WHERE question LIKE "%{}%"'.format(key)
     # sql_total = 'SELECT COUNT(*) FROM study'
     res = cur.execute(sql_search)
     data_search = cur.fetchall()
@@ -78,10 +83,16 @@ def detail(id):
     return Response(json.dumps(res, ensure_ascii=False), mimetype='application/json')
 
 
-@app.route('/search', methods=['GET'])
+@app.route('/', methods=['GET'])
 def index():
+    return render_template('index.html')
+
+
+@app.route('/search', methods=['GET'])
+def searchs():
     key = request.args.get('kw')
-    res = search(key)
+    choice = request.args.get('choice')
+    res = search(key,choice)
     return res
 
 
