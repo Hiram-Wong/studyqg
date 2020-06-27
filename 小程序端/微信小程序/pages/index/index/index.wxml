@@ -3,15 +3,20 @@
 </cu-custom>
 <add-tips />
 <!--轮播-->
-<swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+<!-- <swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
   <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
     <view class="swiper-item">
       <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
       <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
     </view>
   </swiper-item>
+</swiper> -->
+<swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{swiperList}}" wx:key>
+    <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+    <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+  </swiper-item>
 </swiper>
-
 <!--搜索框-->
 <view class="cu-bar bg-white">
   <view class="action sub-title">
@@ -20,28 +25,48 @@
   </view>
 </view>
 <view class="cu-form-group">
-	<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaInput" placeholder="请输入至少连续两个字符的关键词" value="{{textareaValue}}"></textarea>
+	<textarea class="textarea-bg" maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaInput" placeholder="请输入至少连续两个字符的关键词" value="{{textareaValue}}"></textarea>
 </view>
-<view class="margin-top-sm cu-card">
-  <view class="cu-capsule round margin-left-sm margin-top-xs fl">
-    <view class="cu-tag bg-red shadow=true">
-      题库总量
-    </view>
-    <view class="cu-tag line-red shadow=true">
-      {{res_total}}
-    </view>
-  </view>
-  <view class="margin-left-lg fl">
+<view class="margin-top-sm cu-card margin-left-sm margin-right-sm">
+  <view class="fl">
     <view catchtouchstart="streamRecord" catchtouchend="endStreamRecord">
       <image class="shadow=true" src="{{sayImg}}" style="width:64rpx;height:64rpx"></image>
     </view>
   </view>
+  <switch class="sm margin-top-xs" bindchange="SearchType"></switch>
+  <span class="margin-left-sm">选项搜索</span>
   <view class="text-right margin-left-xl fr">
     <button class="cu-btn round bg-green shadow=true margin-right-sm" bindtap="clear">清空</button>
     <button class="cu-btn round bg-cyan shadow=true margin-right-sm" bindtap="search">搜索</button>
   </view>
 </view>
 
+<!--加载条-->
+<view class='load-progress {{loadProgress!=0?"show":"hide"}}' style="top:{{CustomBar}}px;">
+  <view class='load-progress-bar bg-green' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+  <view class='load-progress-spinner text-green'></view>
+</view>
+
+<!--弹窗-->
+<view class="cu-modal {{ClipboardType?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">监听到剪切板,是否粘贴?</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+     {{ClipboardValue}}
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="Paste">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
 
 <!--弹窗-->
 <view class="cu-modal {{modalName=='textareaModal'?'show':''}}">
@@ -58,7 +83,6 @@
   </view>
 </view>
 
-<!--弹窗-->
 <view class="cu-modal {{modalName=='resModal'?'show':''}}">
   <view class="cu-dialog">
     <view class="cu-bar bg-white justify-end">
@@ -73,16 +97,26 @@
   </view>
 </view>
 
+<!--回顶部-->
 <image src='/images/totop.png' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
+
 <!--结果-->
-<view class="result margin-top-sm" hidden="{{isBindExpert}}">
-  <view class="cu-bar bg-white margin-top-sm">
+<view class="result margin-top-sm {{isBindExpert?'animation-slide-bottom animation-reverse':''}}" hidden="{{isBindExpert}}">
+  <view class="cu-bar bg-white animation-fade margin-sm round">
     <view class="action sub-title">
       <text class="text-xl text-bold text-blue">搜索结果</text>
       <text class="text-ABC text-blue">answer</text>
     </view>
+    <view class="cu-capsule round  margin-right-sm">
+      <view class="cu-tag bg-red shadow=true">
+        搜索结果
+      </view>
+      <view class="cu-tag line-red shadow=true">
+        {{arrList.length}}
+      </view>
+    </view>
   </view>
-  <view class="card" wx:for='{{arrList}}'>
+  <view class="card {{index%2!=0?'animation-slide-left':'animation-slide-right'}}" wx:for='{{arrList}}'>
     <navigator url="/pages/index/detail/detail?id={{item.id}}">
     <view class="cu-card article" >
       <view class="cu-item shadow">
@@ -95,7 +129,7 @@
             <view>
               <view class="cu-tag bg-red light sm round">学习强国</view>
               <view class="cu-tag bg-green light sm round">挑战答题</view>
-              <view class="cu-tag bg-grey light sm round fr">{{index+1}}</view>
+              <view class="cu-tag bg-cyan light sm round fr">{{index+1}}</view>
             </view>
           </view>
         </view>
@@ -104,3 +138,18 @@
     </navigator>
   </view>
 </view>
+
+<!-- <view class="cu-bar bg-white margin-top">
+  <view class='action'>
+    <text class='cuIcon-title text-blue'></text>进度条加载
+  </view>
+  <view class='action'>
+    <button class='cu-btn bg-green shadow' bindtap='loadProgress'>
+      点我
+    </button>
+  </view>
+</view>
+<view class='load-progress {{loadProgress!=0?"show":"hide"}}' style="top:200px;">
+  <view class='load-progress-bar bg-blue' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+  <view class='load-progress-spinner text-blue'></view>
+</view> -->

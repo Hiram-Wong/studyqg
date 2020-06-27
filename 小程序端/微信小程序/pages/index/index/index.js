@@ -1,3 +1,4 @@
+const app = getApp();
 var plugin = requirePlugin("WechatSI")
 let manager = plugin.getRecordRecognitionManager()
 
@@ -9,7 +10,12 @@ Page({
     isBindExpert: true,
     modalName: null,
     textareaValue: '',
-    sayImg:'/images/say.png'
+    sayImg:'/images/say.png',
+    SearchTypeValue: false,
+    ClipboardValue: '',
+    ClipboardType: false,
+    loadProgress:0,
+    CustomBar: app.globalData.CustomBar
   },
   streamRecord: function () {
     manager.start({
@@ -61,9 +67,32 @@ Page({
         console.log(res);
         that.setData({
           swiperList: res.data.data
-          
         })
         console.log(that.data.swiperList);
+      }
+    });
+    // wx.setClipboardData({
+    //   data: 'data',
+    //   success (res) {
+    //     wx.getClipboardData({
+    //       success (res) {
+    //         console.log(res.data) // data
+    //       }
+    //     })
+    //   }
+    // });
+    wx.getClipboardData({
+      success: function (res) {
+        if (res.data) {
+          that.setData({
+            ClipboardType: true,
+            ClipboardValue: res.data
+          })
+        } else {
+          that.setData({
+            ClipboardType: false
+          })
+        }
       }
     });
     wx.request({
@@ -83,6 +112,21 @@ Page({
     this.setData({
       DotStyle: e.detail.value
     })
+  },
+  loadProgress(){
+    this.setData({
+      loadProgress: this.data.loadProgress+5
+    })
+    console.log(this.data.loadProgress)
+    if (this.data.loadProgress<100){
+      setTimeout(() => {
+        this.loadProgress();
+      }, 100)
+    }else{
+      this.setData({
+        loadProgress: 0
+      })
+    }
   },
   // cardSwiper
   cardSwiper(e) {
@@ -158,20 +202,30 @@ Page({
   
   clear() {
     this.setData({
-      textareaValue: "",
+      textareaValue: '',
+      isBindExpert: true,
+      arrList: ''
     });
-    console.log(this.data.textareaValue)
+    // console.log(this.data.textareaValue)
   },
-  
+
+  SearchType(e) {
+    this.setData({
+      SearchTypeValue: e.detail.value
+    })
+    // console.log(this.data.SearchTypeValue)
+  },
   search() {
     var that = this;
     var textvalue = this.data.textareaValue;
+    this.loadProgress()
     if (textvalue.length>=2){
       wx.request({
         method: 'GET',
         url: 'https://xuexi.catni.cn/search',
         data: {
-          kw: this.data.textareaValue
+          kw: this.data.textareaValue,
+          choice: this.data.SearchTypeValue
         },
         success: function (res) {
           console.log(res);
@@ -205,7 +259,21 @@ Page({
   },
   hideModal(e) {
     this.setData({
-      modalName: null
+      modalName: null,
+      ClipboardType: null
+    })
+  },
+  Paste(e){
+    var that = this
+    this.setData({
+      ClipboardType: null,
+    });
+    wx.getClipboardData({
+      success (res){
+        that.setData({
+          textareaValue: res.data,
+        });
+      }
     })
   },
   /**
@@ -215,7 +283,7 @@ Page({
 
   },  // 获取滚动条当前位置
   onPageScroll: function (e) {
-    console.log(e)
+    // console.log(e)
     if (e.scrollTop > 100) {
       this.setData({
         floorstatus: true
@@ -239,6 +307,7 @@ Page({
         content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
       })
     }
-  }
+  },
+  
 })
 
